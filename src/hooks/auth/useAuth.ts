@@ -114,10 +114,36 @@ export function useAuth() {
     }
   }, [supabase]);
 
+  const signInWithGoogle = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
+      const { error: err } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `${appUrl}/auth/callback`,
+        },
+      });
+
+      if (err) throw err;
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Google sign in failed";
+      setError(message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, [supabase]);
+
   return {
     ...session,
     loading,
     error,
     signOut,
+    signInWithGoogle,
   };
 }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createServerComponentClient } from "@/lib/supabase/client";
+import { createServerComponentClient } from "@/lib/supabase/server";
 import { handleApiError } from "@/lib/utils/errors";
 
 export async function GET(req: Request) {
