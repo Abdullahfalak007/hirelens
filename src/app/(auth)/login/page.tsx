@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
 import { useLogin } from "@/hooks/auth";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default function LoginPage() {
   const router = useRouter();

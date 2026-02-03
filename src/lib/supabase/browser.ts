@@ -13,7 +13,10 @@ export function createClient() {
   if (!supabaseUrl || !supabaseAnonKey) {
     // Return a dummy client during build - will work in runtime
     console.warn("Supabase credentials not configured yet");
-    return createBrowserClient<Database>("https://placeholder.supabase.co", "placeholder-key");
+    return createBrowserClient<Database>(
+      "https://placeholder.supabase.co",
+      "placeholder-key",
+    );
   }
   return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey);
 }

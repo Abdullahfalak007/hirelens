@@ -32,14 +32,48 @@ export default function DashboardPage() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8">
+          {/* Quick Actions */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Link href="/dashboard/jobs">
+              <button className="w-full p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-2">📋</div>
+                <h3 className="font-semibold text-gray-900">All Jobs</h3>
+                <p className="text-sm text-gray-600">
+                  {jobs?.length || 0} postings
+                </p>
+              </button>
+            </Link>
+            <Link href="/dashboard/jobs/new">
+              <button className="w-full p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-2">➕</div>
+                <h3 className="font-semibold text-gray-900">Post Job</h3>
+                <p className="text-sm text-gray-600">Create new</p>
+              </button>
+            </Link>
+            <Link href="/dashboard/applicants">
+              <button className="w-full p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-2">👥</div>
+                <h3 className="font-semibold text-gray-900">Applicants</h3>
+                <p className="text-sm text-gray-600">View candidates</p>
+              </button>
+            </Link>
+            <Link href="/dashboard/analytics">
+              <button className="w-full p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-2">📊</div>
+                <h3 className="font-semibold text-gray-900">Analytics</h3>
+                <p className="text-sm text-gray-600">View metrics</p>
+              </button>
+            </Link>
+          </div>
+
           {/* Jobs Section */}
           <section>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
-                Job Postings
+                Recent Job Postings
               </h2>
-              <Link href="/dashboard/jobs/new">
-                <Button>Post New Job</Button>
+              <Link href="/dashboard/jobs">
+                <Button variant="outline">View All</Button>
               </Link>
             </div>
 

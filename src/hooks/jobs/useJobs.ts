@@ -1,19 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-export type Job = {
-  id: string;
-  title: string;
-  description?: string;
-  location?: string;
-  employment_type?: string;
-  experience_level?: string;
-  min_salary?: number;
-  max_salary?: number;
-  status?: string;
-  created_at?: string;
-};
+import type { Job } from "@/types";
 
 export function useJobs() {
   const [jobs, setJobs] = useState<Job[] | null>(null);
