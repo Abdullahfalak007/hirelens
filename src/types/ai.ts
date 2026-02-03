@@ -84,8 +84,8 @@ export interface BatchMatchingResult {
 
 export interface AIProcessingJob {
   id: string;
-  type: 'resume_parsing' | 'batch_matching' | 'ranking';
-  status: 'pending' | 'processing' | 'completed' | 'failed';
+  type: "resume_parsing" | "batch_matching" | "ranking";
+  status: "pending" | "processing" | "completed" | "failed";
   input: any;
   result?: any;
   error?: string;

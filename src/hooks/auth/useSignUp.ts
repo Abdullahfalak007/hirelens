@@ -3,11 +3,11 @@
  * Handles user registration with email, password, and organization
  */
 
-'use client';
+"use client";
 
-import { useCallback, useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
-import type { SignUpCredentials } from '@/types';
+import { useCallback, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import type { SignUpCredentials } from "@/types";
 
 export function useSignUp() {
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ export function useSignUp() {
       }
 
       if (!authData.user) {
-        throw new Error('Failed to create user');
+        throw new Error("Failed to create user");
       }
 
       // For now, just return the auth user
@@ -45,7 +45,7 @@ export function useSignUp() {
         user: authData.user,
       };
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Sign up failed';
+      const message = err instanceof Error ? err.message : "Sign up failed";
       setError(message);
       throw err;
     } finally {
