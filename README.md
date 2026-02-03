@@ -150,17 +150,24 @@ src/
    - Create policies for multi-tenant access
 
 5. **Start development server**
+
    ```bash
    pnpm dev
    ```
+
    Open [http://localhost:3000](http://localhost:3000)
+
+6. **Deploy to Vercel (Optional)**
+   - See [Vercel Deployment Guide](./docs/VERCEL_DEPLOYMENT.md)
+   - Production URL: https://hirelens.vercel.app
 
 ## 📚 Documentation
 
 - [WORKFLOWS.md](./WORKFLOWS.md) - AI agent instructions for extending the project
+- [Supabase Setup](./docs/SUPABASE_SETUP.md) - Database initialization guide
+- [Google OAuth Setup](./docs/GOOGLE_OAUTH_SETUP.md) - Authentication configuration
+- [Vercel Deployment](./docs/VERCEL_DEPLOYMENT.md) - Production deployment guide
 - [Supabase Schema](./docs/supabase-schema.sql) - Database structure
-- [API Documentation](./docs/API.md) - Endpoint specifications
-- [Component Guide](./docs/COMPONENTS.md) - UI component usage
 
 ## 🔧 Development Workflows
 

@@ -30,9 +30,8 @@
 10. Add Authorized redirect URIs:
     ```
     http://localhost:3000/auth/callback
-    https://yourdomain.com/auth/callback
+    https://hirelens.vercel.app/auth/callback
     ```
-    (Replace `yourdomain.com` with your actual domain when deploying)
 11. Click **Create**
 12. Copy the **Client ID** and **Client Secret**
 
@@ -67,22 +66,49 @@ await signInWithGoogle();
 
 ## Testing Locally
 
-1. Start dev server:
-
+1. Make sure `NEXT_PUBLIC_APP_URL=http://localhost:3000` in `.env.local`
+2. Start dev server:
    ```bash
    pnpm dev
    ```
+3. Visit `http://localhost:3000`
+4. Click "Sign in with Google"
+5. You'll be redirected to Google login, then back to `http://localhost:3000/auth/callback`
 
-2. Visit `http://localhost:3000`
-3. Click "Sign in with Google"
-4. You'll be redirected to Google login, then back to the app
+## Testing on Vercel
+
+1. Ensure `NEXT_PUBLIC_APP_URL=https://hirelens.vercel.app` is set in Vercel environment variables
+2. Deploy to Vercel:
+   ```bash
+   git push origin main
+   ```
+3. Visit `https://hirelens.vercel.app`
+4. Click "Sign in with Google"
+5. You'll be redirected to Google login, then back to `https://hirelens.vercel.app/auth/callback`
 
 ## Deployment Checklist
 
-- [ ] Add production redirect URI to Google Console credentials
-- [ ] Update `.env.local` with production Supabase URL
+### Google Cloud Console
+
+- [ ] Add `https://hirelens.vercel.app/auth/callback` to Authorized redirect URIs
+- [ ] Verify Client ID and Client Secret are correct
+
+### Supabase
+
 - [ ] Enable Google provider in production Supabase project
-- [ ] Test sign-in flow in production environment
+- [ ] Paste Client ID and Client Secret into Supabase Google settings
+- [ ] Verify Supabase redirect URL: `https://your-supabase-project.supabase.co/auth/v1/callback`
+
+### Vercel Environment
+
+- [ ] Set production environment variables in Vercel dashboard:
+  - `NEXT_PUBLIC_SUPABASE_URL`
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - `NEXT_PUBLIC_GOOGLE_CLIENT_ID`
+  - `NEXT_PUBLIC_APP_URL=https://hirelens.vercel.app`
+  - `SUPABASE_SERVICE_ROLE_KEY` (for server functions)
+- [ ] Deploy to production
+- [ ] Test sign-in flow at `https://hirelens.vercel.app`
 - [ ] Set up email confirmation (optional, via Supabase settings)
 
 ## Troubleshooting
