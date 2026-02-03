@@ -139,9 +139,18 @@ CREATE POLICY insert_jobs_for_org ON jobs
     )
   );
 
--- Example UPDATE/DELETE policies (only allow updates/deletes within organization)
-CREATE POLICY modify_jobs_for_org ON jobs
-  FOR UPDATE, DELETE
+-- Example UPDATE policy for jobs (only allow updates within organization)
+CREATE POLICY update_jobs_for_org ON jobs
+  FOR UPDATE
+  USING (
+    organization_id = (
+      SELECT organization_id FROM app_users WHERE auth_id = auth.uid() LIMIT 1
+    )
+  );
+
+-- Example DELETE policy for jobs (only allow deletes within organization)
+CREATE POLICY delete_jobs_for_org ON jobs
+  FOR DELETE
   USING (
     organization_id = (
       SELECT organization_id FROM app_users WHERE auth_id = auth.uid() LIMIT 1
